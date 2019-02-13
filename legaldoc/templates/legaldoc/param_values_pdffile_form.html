@@ -1,0 +1,103 @@
+{% include 'includes/adminheader.html' %}
+{% include 'includes/adminsidebar.html' %}
+{% block content %}
+{% load static %}
+
+	<main class="main">
+
+		<!-- Breadcrumb -->
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item">Home</li>
+		<li class="breadcrumb-item"><a href="{% url 'pdffiledata' %}">Manage Files</a>
+		</li>
+		<li class="breadcrumb-item active">Dashboard</li>
+
+		<!-- Breadcrumb Menu-->
+		<li class="breadcrumb-menu d-md-down-none">
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+				<a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+				<a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+			</div>
+		</li>
+		</ol>
+
+
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+			
+			<div class="card">
+				<div class="card-header">
+					<i class="fa fa-align-justify"></i>Upload File
+				</div>
+				
+				<div class="row">
+				<div class="col-sm-8">
+				<div class="card-block">
+                 <form method="post" enctype="multipart/form-data">{% csrf_token %}
+						
+						
+						
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Parameter Name</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="Parameter_name" class="form-control">
+								
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Case NAME</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="Case_NAME" class="form-control">
+								
+							</div>
+						</div>
+						
+								<input type="hidden" name="Person_id" value="{{user.id}}">
+							
+						
+						
+						<div class="form-group row">
+						
+						
+						<label class="col-md-3 form-control-label" for="text-input">File</label>
+							<div class="col-md-9">
+							
+								<input type="file" id="text-input" name="Value" class="form-control" multiple>
+							
+							</div>
+						
+							
+							
+						</div>
+					
+				</div>
+				</div>
+				</div>
+				<div class="card-footer">
+					<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Upload</button>
+				
+				</div>
+
+
+
+					</form>		
+				
+				
+			</div>
+
+			</div>
+
+		</div>
+		<!-- /.conainer-fluid -->
+	</main>
+</div>
+		
+{% endblock %}
+
+ {% include 'includes/adminfooter.html' %}
+
+

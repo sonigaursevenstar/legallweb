@@ -1,0 +1,153 @@
+{% include 'includes/adminheader.html' %}
+{% include 'includes/adminsidebar.html' %}
+{% block content %}
+{% load static %}
+<main class="main">
+
+		<!-- Breadcrumb -->
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item">Home</li>
+		<li class="breadcrumb-item"><a href="#">Admin</a>
+		</li>
+		<li class="breadcrumb-item active">Dashboard</li>
+
+		<!-- Breadcrumb Menu-->
+		<li class="breadcrumb-menu d-md-down-none">
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+				<a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+				<a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
+			</div>
+		</li>
+		</ol>
+
+
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+			
+			<div class="card">
+				<div class="card-header">
+					<i class="fa fa-align-justify"></i>User Signup
+				</div>
+				
+				<div class="row">
+				<div class="col-sm-8">
+				<div class="card-block">
+                 <form method="post" enctype="multipart/form-data">{% csrf_token %}
+						
+						
+						{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+					
+					
+					{% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+					
+					
+					
+						<div class="form-group row">
+								<label class="col-md-3 form-control-label" for="text-input">Name</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="first_name" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						
+						<div class="form-group row">
+								<label class="col-md-3 form-control-label" for="text-input">Username</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="username" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Email Address</label>
+							<div class="col-md-9">
+								<input type="email" id="text-input" name="email" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Password</label>
+							<div class="col-md-9">
+								<input type="password" id="text-input" name="password" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Confirm Password</label>
+							<div class="col-md-9">
+								<input type="password" id="text-input" name="Password2" class="form-control" value="">
+								
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Hourly Fee</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="Hourly_fee" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Phone Number</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="Phone_number" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-3 form-control-label" for="text-input">Calendar Name</label>
+							<div class="col-md-9">
+								<input type="text" id="text-input" name="Calendar_name" class="form-control" value="" required>
+								
+							</div>
+						</div>
+						
+						
+					
+				</div>
+				</div>
+				</div>
+				<div class="card-footer">
+					<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>Submit</button>
+				
+				</div>
+
+
+
+					</form>		
+				
+				
+			</div>
+
+			</div>
+
+		</div>
+		<!-- /.conainer-fluid -->
+	</main>
+</div>
+{% endblock %}
+
+ {% include 'includes/adminfooter.html' %}
+
+

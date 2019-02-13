@@ -1,0 +1,95 @@
+{% include 'includes/adminheader.html' %}
+{% include 'includes/adminsidebar.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Main content -->
+	<main class="main">
+        <!-- Breadcrumb -->
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item">Home</li>
+		<li class="breadcrumb-item"><a href="#">Admin</a>
+		</li>
+		<li class="breadcrumb-item active">Dashboard</li>
+
+		<!-- Breadcrumb Menu-->
+		<li class="breadcrumb-menu d-md-down-none">
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+				<a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+				<a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settingsd</a>
+			</div>
+		</li>
+		</ol>
+		
+		
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+			
+			<div class="card">
+				<div class="card-header">
+					<i class="fa fa-align-justify"></i>Users Data<a href="{% url 'signup' %}" class="btn btn-sm pull-right btn-primary"><i class="fa fa-plus-circle"></i> &nbsp;Add New</a>
+				</div>
+				
+				<div class="card-block">
+				{% if messages %}
+<div class="card-header" style="color: green;">
+    {% for message in messages %}
+    {% if message.tags %} {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+   
+    {% endfor %}
+</div>
+{% endif %}
+					<table id="example" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th width="10">Sr.No.</th>
+								<th>Name</th>
+								
+								<th>Email</th>
+								<th>Hourly Fee</th>
+								<th>Phone</th>
+								<!--<th>Action</th>-->
+							</tr>
+						</thead>
+						<tbody>
+						 {% if data %}
+						  {% for dataa in data %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td>{{dataa.first_name }}</td>
+								<td>{{dataa.email}}</td>
+								<td>{{dataa.Hourly_fee }}</td>
+								<td>{{dataa.Phone_number }}</td>
+								
+								<!--<td align="center"><a href="{% url 'headerfooterupdate' dataa.pk %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>-->
+							</tr>
+							  {% endfor %}
+							
+							
+							{% else %}
+   <tr>
+  
+    <th colspan="4" scope="col">No Data Found</th>
+  </tr>
+  {% endif %}     
+							
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
+			</div>
+
+		</div>
+		<!-- /.conainer-fluid -->
+	</main>
+</div>
+{% endblock %}
+
+ {% include 'includes/adminfooter.html' %}
+
+

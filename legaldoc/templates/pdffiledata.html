@@ -1,0 +1,96 @@
+{% include 'includes/adminheader.html' %}
+{% include 'includes/adminsidebar.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Main content -->
+	<main class="main">
+        <!-- Breadcrumb -->
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item">Home</li>
+		<li class="breadcrumb-item"><a href="#">Admin</a>
+		</li>
+		<li class="breadcrumb-item active">Dashboard</li>
+
+		<!-- Breadcrumb Menu-->
+		<li class="breadcrumb-menu d-md-down-none">
+			<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				<a class="btn btn-secondary" href="#"><i class="icon-speech"></i></a>
+				<a class="btn btn-secondary" href="./"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+				<a class="btn btn-secondary" href="#"><i class="icon-settings"></i> &nbsp;Settingsd</a>
+			</div>
+		</li>
+		</ol>
+		
+		
+		<div class="container-fluid">
+			<div class="animated fadeIn">
+			
+			<div class="card">
+			<div class="card-header">
+                                        <i class="fa fa-align-justify"></i>Header Footer Data<a href="{% url 'uploadpdffile' %}" class="btn btn-sm pull-right btn-primary"><i class="fa fa-plus-circle"></i> &nbsp;Add New</a>
+                                </div>
+
+                                <div class="card-block">
+                                {% if messages %}
+<div class="card-header" style="color: green;">
+    {% for message in messages %}
+    {% if message.tags %} {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+
+    {% endfor %}
+</div>
+{% endif %}
+					<table id="example" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th width="10">Sr.No.</th>
+								<th>Parameter Name</th>
+								<th>Case Name</th>
+								<th>Download</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						 {% if data %}
+						  {% for dataa in data %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td>{{dataa.Parameter_name}}</td>
+								<td>{{dataa.Case_NAME}}</td>
+								<!--<td>{{dataa.Case_NAME}}</td>
+							<td>{% if 1 == dataa.id %}<img src="/media/{{ dataa.img }}" alt="" width="150">{% else %}  {{ dataa.content }}{% endif %}  </td>-->
+									<td><a href="/media/{{ dataa.Value }}" target="_blank" class="red">Download</a></td>
+								<td align="center"><a href="{% url 'pdffileupdate' dataa.pk %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+								<a href="{% url 'pdffiledelete' dataa.pk %}" class="btn btn-danger" onclick="return confirm('Sure to delete?')"><i class="fa fa-trash"></i></a>
+								
+								</td>
+							</tr>
+							  {% endfor %}
+							
+							
+							{% else %}
+   <tr>
+  
+    <th colspan="4" scope="col">No Data Found</th>
+  </tr>
+  {% endif %}     
+							
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
+			</div>
+
+		</div>
+		<!-- /.conainer-fluid -->
+	</main>
+</div>
+{% endblock %}
+
+ {% include 'includes/adminfooter.html' %}
+
+
