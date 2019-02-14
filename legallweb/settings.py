@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-import django_heroku
+#import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +25,7 @@ SECRET_KEY = '0hp81^16n*$!@0t8v+s44n3woh9jy$tzh-pssqvsj5-gv)g6fa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost','legallweb.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -123,13 +123,11 @@ AUTH_USER_MODEL = 'legaldoc.User'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-#STATIC_URL = '/static/'
-
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#--django_heroku.settings(locals())

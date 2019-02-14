@@ -6,8 +6,8 @@
  * @license MIT
  */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
-
 {% load static %}
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../fonts/glyphicons-halflings-regular.eot');
@@ -7558,7 +7558,7 @@ base-chart.chart {
     padding: 0.5rem 1rem;
     margin-right: 0;
     background-color: #fff;
-   background-image: url("/media/documents/logo.png"); 
+    background-image: url("/media/documents/logo.png"); 
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 70px auto;
